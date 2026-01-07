@@ -8,24 +8,39 @@ import MovieDetails from "./pages/MovieDetails.jsx";
 import SeatLayout from "./pages/SeatLayout.jsx";
 import MyBookings from "./pages/MyBookings.jsx";
 import Favorite from "./pages/Favorite.jsx";
+import Layout from "./pages/admin/Layout.jsx";
+import DashBoard from "./pages/admin/DashBoard.jsx";
+import AddShows from "./pages/admin/AddShows.jsx";
+import ListShows from "./pages/admin/ListShows.jsx";
+import ListBookings from "./pages/admin/ListBookings.jsx";
 import { Toaster } from "react-hot-toast";
+
 const App = () => {
   const isAdminRoute = useLocation().pathname.startsWith("/admin");
   return (
     <>
-      <Toaster/>
-        {!isAdminRoute && <Navbar />}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:id" element={<MovieDetails />} />
-          <Route path="/movies/:id/:date" element={<SeatLayout />} />
-          <Route path="/my-bookings" element={<MyBookings />} />
-          <Route path="/favorite" element={<Favorite />} />
-        </Routes>
-        {!isAdminRoute && <Footer />}
+      <Toaster />
+      {!isAdminRoute && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/movies/:id/:date" element={<SeatLayout />} />
+        <Route path="/my-bookings" element={<MyBookings />} />
+        <Route path="/favorite" element={<Favorite />} />
+        {/* <Route path="/admin/*" element={<Layout />} /> */}
+        <Route path="/admin" element={<Layout />}>
+          <Route index element={<DashBoard />} />
+          <Route path="add-shows" element={<AddShows />} />
+          <Route path="list-shows" element={<ListShows />} />
+          <Route path="list-bookings" element={<ListBookings />} />
+        </Route>
+      </Routes>
+      {!isAdminRoute && <Footer />}
     </>
   );
 };
 export default App;
 // https://www.figma.com/design/VVseYD6FWfWaf9aSK2f0Ve/QuickShow?node-id=0-1&p=f
+//3:30:01 https://www.youtube.com/watch?v=Pez37wmUaQM&t=4451s

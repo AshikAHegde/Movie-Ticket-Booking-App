@@ -15,3 +15,24 @@ body{
     color:white;
     background-color:black;
 }
+.no_scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+}
+
+/* Remove number input arrows for webkit browsers */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* Invert color of calendar picker icon for dark mode */
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+    
