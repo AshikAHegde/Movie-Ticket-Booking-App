@@ -15,10 +15,10 @@ await connectdb();
 app.use(express.json());
 app.use(cors());
 app.use(clerkMiddleware());
-app.use("/api/inngest", serve({ client: inngest, functions }));
 
 // API Routes
 app.get("/", (req, res) => res.send("Server is Live!"));
+app.use("/api/inngest", serve({ client: inngest, functions }));
 
 app.listen(port, () =>
   console.log(`Server running on port http://localhost:${port}`)
